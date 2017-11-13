@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:App2"
+             x:Class="App2.View.PrincipalPage"
+             Title="Comparador de preços">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,10,50">
+            <Entry Placeholder="Digite o preço" Text="{Binding Valor}" Keyboard="Numeric"/>
+            <Entry Placeholder="Entre com a quantidade" Text="{Binding Quant}"
+                   Keyboard="Numeric"/>
+            <Button Text="Calcular" Command="{Binding CalcularCommand}"/>
+            <Label Text="{Binding Minimo}" TextColor="Green" FontAttributes="Bold"/>
+            <ListView ItemsSource="{Binding Valores}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" 
+                                       Text="Preço do produto(R$):"/>
+                                <Label Grid.Row="0" Grid.Column="1" 
+                                       Text="{Binding Preco}" />
+                                <Label Grid.Row="1" Grid.Column="0" 
+                                       Text="Preço Calculado(R$):"/>
+                                <Label Grid.Row="1" Grid.Column="1" 
+                                       Text="{Binding Resultado}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Limpar" Command="{Binding LimparCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
